@@ -13,24 +13,15 @@ Um *scaffolding tool* CLI (Command Line Interface) para inicializar rapidamente 
 
 ## 📦 Instalação
 
-Como este é um script local, ele provavelmente será executado de duas formas:
-
-### Opção 1: Uso Direto (Recomendado para CLI)
-
-Se você o publicou como um pacote npm:
-
 ```bash
 
-# Via npx 
 npm install -g create-skyline-app
-
-npx create-skyline-app
 
 ```
 
 ## 🛠️ Como Usar
 
-Para iniciar um novo projeto, basta executar o comando de instalação no diretório onde você deseja criar a pasta do novo projeto.
+Para iniciar um novo projeto, basta executar o comando de instalação (```bash npx create-skyline-app```) no diretório onde você deseja criar a pasta do novo projeto.
 
 O CLI fará uma série de perguntas:
 
