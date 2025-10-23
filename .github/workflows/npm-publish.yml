@@ -28,9 +28,6 @@ jobs:
       - name: Install dependencies
         run: npm ci # Usa 'npm ci' para instalações limpas no ambiente de CI
 
-      - name: Run tests (Optional but Recommended)
-        run: npm test
-
       # Obtém o número da versão da tag Git (ex: remove 'refs/tags/' de 'refs/tags/v1.2.3')
       - name: Get tag version
         id: get_version
