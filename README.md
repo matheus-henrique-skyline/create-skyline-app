@@ -107,10 +107,3 @@ O script assume a seguinte estrutura dentro do seu template base (`templates/emp
 ## 🤝 Contribuições
 
 Contribuições, sugestões e relatórios de bugs são bem-vindos\! Por favor, abra uma *issue* ou *pull request* no repositório.
-
-## 📝 Licença
-
-[Geralmente, a licença MIT ou similar. Inclua a licença aqui.]
-
-```
-```
