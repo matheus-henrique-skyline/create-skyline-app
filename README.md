@@ -20,28 +20,13 @@ Como este é um script local, ele provavelmente será executado de duas formas:
 Se você o publicou como um pacote npm:
 
 ```bash
-# Via npx (sem instalação global)
+
+# Via npx 
+npm install -g create-skyline-app
+
 npx create-skyline-app
 
-# Ou, se for um comando global
-npm install -g create-skyline-app
 ```
-
-### Opção 2: Uso Local (Se mantido no repositório de ferramentas)
-
-1.  Clone o repositório onde este script está.
-
-2.  Certifique-se de que todas as dependências estejam instaladas:
-
-    ```bash
-    npm install inquirer fs-extra chalk
-    ```
-
-3.  Execute o script diretamente:
-
-    ```bash
-    node index.js
-    ```
 
 ## 🛠️ Como Usar
 
