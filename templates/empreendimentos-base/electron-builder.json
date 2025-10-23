@@ -1,0 +1,18 @@
+{
+  "appId": "com.skylineip.template",
+  "productName": "Template Skyline",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "main/**/*",
+    "out/**/*",
+    "package.json",
+    "node_modules/**/*"
+  ],
+  "win": {
+    "target": "nsis",
+    "icon": "/public/icon.ico"
+  }
+}
+

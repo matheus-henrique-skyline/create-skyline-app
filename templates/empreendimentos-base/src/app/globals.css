@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@config '../../tailwind.config.ts';
+
+/* Base layer */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    user-select: none;
+  }
+
+  ::selection {
+    background-color: rgba(137, 125, 123, 0.4);
+  }
+}
+
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: "bricolage";
+}
+
+img {
+  /* Para navegadores baseados em WebKit */
+  -webkit-user-drag: none;
+}
+
+/* Utilities layer */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: var(--second);
+    width: 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--first);
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--first);
+  }
+
+  .prevent-clicks {
+    pointer-events: none;
+  }
+
+  :root {
+    --first: "{{primaryColor}}";
+    --second: "{{secondaryColor}}";
+  }
+
+  /* @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #1E1E1E;
+      --foreground: #896337;
+      --menu: #AFA38B;
+      --menuText: #E2DED2;
+    }
+  } */
+
+  button:disabled {
+    opacity: 0.2;
+  }
+}
+
+@font-face {
+  font-family: "bricolage";
+  src: url("./fonts/BricolageGrotesque-VariableFont.ttf")
+    format("truetype-variations");
+  font-weight: 100 900; /* intervalos de peso suportados */
+  font-style: normal;
+  font-display: swap;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 70%;
+}
+
+.gm-svpc {
+  display: none !important;
+} /* Esconde o botão de sair do Street View */
+.gm-fullscreen-control {
+  display: none !important;
+} /* Esconde fullscreen */
