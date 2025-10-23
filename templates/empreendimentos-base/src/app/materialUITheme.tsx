@@ -7,8 +7,6 @@ import { usePathname } from "next/navigation";
 import LoadingOverlay from "./components/Loading";
 import { useContextDefault } from "@/context/Context";
 import TelaCheia from "./components/TelaCheia";
-import Music from "./project-name/components/Music";
-import ButtonSoundAudio from "./components/ButtonSoundAudio";
 
 //configurar tema
 //cores e fontes
@@ -65,8 +63,6 @@ export default function ThemeRegistry({
       {loading && <LoadingOverlay />}
       {isLandscape ? children : <OrientationWarning />}
       {abrirImagensTelaCheia?.open && <TelaCheia />}
-      <ButtonSoundAudio />
-      <Music />
     </ThemeProvider>
   );
 }
