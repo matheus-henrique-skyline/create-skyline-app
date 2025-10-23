@@ -1,6 +1,6 @@
 {
   "name": "create-skyline-app",
-  "version": "1.5.1",
+  "version": "v1.5.2",
   "description": "Comando para criar um projeto base de Telas Interativas",
   "author": "Matheus Henrique",
   "license": "MIT",
