@@ -1,0 +1,54 @@
+name: NPM Publish
+
+# O pipeline será executado APENAS quando uma nova tag Git for criada
+on:
+  push:
+    tags:
+      - 'v*' # Garante que o pipeline só é acionado em tags que comecem com 'v', ex: v1.0.0, v1.0.1
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    
+    # Condição de segurança: Garante que só executa se a tag for um release (evita re-publicações acidentais)
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # Use a versão do Node.js que seu pacote suporta
+          # Configura o registro para usar o token e autenticar no npm
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci # Usa 'npm ci' para instalações limpas no ambiente de CI
+
+      - name: Run tests (Optional but Recommended)
+        run: npm test
+
+      # Obtém o número da versão da tag Git (ex: remove 'refs/tags/' de 'refs/tags/v1.2.3')
+      - name: Get tag version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      # Verifica se a versão do pacote corresponde à tag
+      - name: Check version in package.json
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          TAG_VERSION="${{ steps.get_version.outputs.VERSION }}"
+          
+          if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
+            echo "Error: package.json version ($PACKAGE_VERSION) does not match tag version ($TAG_VERSION)."
+            exit 1
+          fi
+
+      - name: Publish to npm
+        run: npm publish --access public # Use '--access public' se for um pacote público
+        env:
+          # Usa o segredo criado no GitHub para autenticação
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
