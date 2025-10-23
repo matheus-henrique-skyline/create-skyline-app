@@ -86,6 +86,9 @@ Próximos passos:
    npm install
    npm run dev
 ```
+## Proximos passos
+
+Configure o restante do submenu em `src/app/utils/menuStructure.ts`, como os itens do submenu
 
 ## ⚙️ Estrutura do Template
 
