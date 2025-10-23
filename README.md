@@ -71,14 +71,16 @@ Configure o restante do submenu em `src/app/utils/menuStructure.ts`, como os ite
 O script assume a seguinte estrutura dentro do seu template base (`templates/empreendimentos-base`):
 
   * **Rotas:** O script limpa e recria rotas dentro de `src/app/{{projectName}}/*`.
-  * **Metadados:** Arquivo `src/app/layout.tsx` deve ter os placeholders:
+  * **Metadados:** Arquivo `src/app/layout.tsx` tem os placeholders:
     ```typescript
     export const metadata: Metadata = {
       title: "{{projectName}}",
       description: "{{description}}",
     };
     ```
-  * **Menu:** Arquivo de configuração de menu (e.g., `src/config/menuStructure.ts`) deve ter o placeholder tipado:
+    que serão substituídos pelos valores fornecidos pelo usuário.
+
+  * **Menu:** Arquivo de configuração de menu (e.g., `src/config/menuStructure.ts`) tem o placeholder tipado:
     ```typescript
     const generatedMenuStructure = ({{menuStructure}}) as MenuStructureType[];
     ```
