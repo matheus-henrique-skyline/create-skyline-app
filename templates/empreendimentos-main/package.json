@@ -13,6 +13,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "optimize": "tsx --tsconfig scripts/tsconfig.json scripts/optimize.ts",
     "build-electron": "dotenv -e .env -- electron-builder --config electron-builder.json --publish always",
     "build-electron-test": "dotenv -e .env -- electron-builder --config electron-builder.json --publish never",
     "test-electron": "dotenv -e .env -- electron ."
@@ -47,7 +48,9 @@
     "eslint-config-next": "15.3.4",
     "next": "15.4.10",
     "postcss": "^8",
+    "sharp": "^0.33.5",
     "tailwindcss": "^4.1.11",
+    "tsx": "^4.19.3",
     "typescript": "^5"
   }
 }

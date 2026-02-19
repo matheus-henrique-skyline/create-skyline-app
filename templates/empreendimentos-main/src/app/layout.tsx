@@ -6,9 +6,9 @@ import ThemeRegistry from "./materialUITheme";
 import { ContextSound } from "../context/ContextSound";
 
 export const metadata: Metadata = {
-  title: "Skyline",
+  title: "{{ projectName }}",
   description:
-    "Modelo de Replicação apoiado na Documentação feita para o setor",
+    "{{ projectDescription }}",
 };
 
 export default function RootLayout({
