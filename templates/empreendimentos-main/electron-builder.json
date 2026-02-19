@@ -1,0 +1,17 @@
+{
+  "appId": "com.skylineip.{{ projectName }}",
+  "productName": "{{ projectName }}",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "main/**/*",
+    "out/**/*",
+    "package.json",
+    "node_modules/**/*"
+  ],
+  "win": {
+    "target": "nsis",
+    "icon": "/public/icon.ico"
+  }
+}

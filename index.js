@@ -25,7 +25,7 @@ async function copyTemplate(src, dest, replacements) {
       destName = replacements.projectName;
     } else {
       Object.entries(replacements).forEach(([key, value]) => {
-        destName = destName.replace(new RegExp(`{{${key}}}`, 'g'), String(value));
+        destName = destName.replace(new RegExp(`{{ ${key} }}`, 'g'), String(value));
       });
     }
 
@@ -39,7 +39,7 @@ async function copyTemplate(src, dest, replacements) {
       if (isTextFile) {
         let content = await fs.readFile(srcPath, 'utf-8');
         Object.entries(replacements).forEach(([key, value]) => {
-          content = content.replace(new RegExp(`{{${key}}}`, 'g'), String(value));
+          content = content.replace(new RegExp(`{{ ${key} }}`, 'g'), String(value));
         });
         await fs.writeFile(destPath, content, 'utf-8');
       } else {
@@ -56,11 +56,11 @@ async function copyTemplate(src, dest, replacements) {
 function slugify(text) {
   return text
     .toLowerCase()
-    .normalize("NFD") 
-    .replace(/[\u0300-\u036f]/g, "") 
-    .replace(/[^a-z0-9\s-]/g, "") 
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
     .trim()
-    .replace(/\s+/g, "-") 
+    .replace(/\s+/g, "-")
     .replace(/-+/g, "-");
 }
 
@@ -110,7 +110,7 @@ async function main() {
   ]);
 
   const projectDir = path.join(process.cwd(), answers.projectName);
-  const templateDir = path.join(__dirname, "templates", "empreendimentos-base");
+  const templateDir = path.join(__dirname, "templates", "empreendimentos-main");
 
   if (await fs.pathExists(projectDir)) {
     console.error(chalk.red(`\n❌ Erro: O diretório "${answers.projectName}" já existe.`));
@@ -121,13 +121,13 @@ async function main() {
   const submenuItemsList = answers.submenuItems.split(",").map(s => s.trim()).filter(s => s.length > 0);
 
   const newMenuStructure = submenuItemsList.map(item => {
-    const routeName = slugify(item); 
+    const routeName = slugify(item);
 
     return {
       title: item,
-      submenu: [""], 
-      caminho: `/${answers.projectName}/${routeName}`, 
-      submenuElements: [""], 
+      submenu: [""],
+      caminho: `/${answers.projectName}/${routeName}`,
+      submenuElements: [""],
     };
   });
 
@@ -135,13 +135,13 @@ async function main() {
 
   const replacements = {
     projectName: answers.projectName,
-    description: answers.projectDescription, 
+    description: answers.projectDescription,
     primaryColor: answers.primaryColor,
     secondaryColor: answers.secondaryColor,
     submenuItems: JSON.stringify(submenuItemsList),
     mapLat: answers.mapLat,
     mapLng: answers.mapLng,
-    menuStructure: menuStructureString, 
+    menuStructure: menuStructureString,
   };
 
   console.log(chalk.gray("\n📁 Criando projeto a partir do template..."));
@@ -151,7 +151,7 @@ async function main() {
   console.log(chalk.gray("⚙️  Limpando rotas padrão do template..."));
 
   const projectAppDir = path.join(projectDir, "src", "app", answers.projectName);
-  const preservedDirs = ['components'];
+  const preservedDirs = ['components', 'utils'];
 
   try {
     const entries = await fs.readdir(projectAppDir, { withFileTypes: true });
